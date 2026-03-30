@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bigboy Missing ARG</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    padding: 20px;
+    line-height: 1.6;
+  }
+
+  /* Highlight keywords */
+  .red { color: #ff4d4d; }
+  .yellow { color: #ffff66; }
+  .green { color: #00ff99; }
+
+  /* ไล่สีข้อความลับจากแดงจาง → ขาวกลางๆ */
+  .secret-text {
+    background: linear-gradient(to right, rgba(255,0,0,0.5), rgba(255,255,255,0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  /* Glitch effect สำหรับตัวอักษร 0/1 */
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: lime;
+    animation: glitch-anim 1s infinite;
+  }
+  @keyframes glitch-anim {
+    0% { clip: rect(0, 9999px, 0, 0); transform: translate(0,0);}
+    20% { clip: rect(0, 9999px, 5px, 0); transform: translate(-2px,-2px);}
+    40% { clip: rect(0, 9999px, 10px, 0); transform: translate(2px,2px);}
+    60% { clip: rect(0, 9999px, 5px, 0); transform: translate(-1px,1px);}
+    80% { clip: rect(0, 9999px, 10px, 0); transform: translate(1px,-1px);}
+    100% { clip: rect(0, 9999px, 0, 0); transform: translate(0,0);}
+  }
+</style>
+</head>
+<body>
+
+<h1>Day on Monday (20/02/20) at 01:30 PM</h1>
+
+<p>
+At that time my friend named "<span class="red">bigboy</span>" he is gone. 
+He didn't tell anything to us — no message, no anything. 
+He gone without evidence. He is our best friend; he was happy and goofy all the time. 
+But in "<span class="yellow">monday</span>" <span class="red">bigboy</span> did not come to <span class="yellow">school</span>. 
+By the way, we didn't know where he was going. 
+We went to <span class="red">bigboy's house</span> and found only the computer open with the game "<span class="green">Minecraft</span>" 
+and some files on his computer that had pictures. 
+Something in the pictures we call it "<span class="red">[ENTITY]</span>". 
+If you see a person named <span class="red">bigboy</span>, call this number: 0XX-XXX-XXX. 
+If you want to know anything, ask in @???
+</p>
+
+<!-- ข้อความลับต่อจาก binary -->
+<p class="secret-text">
+Title : <span class="glitch" data-text="0101010">0101010</span> Loading connection complete.<br><br>
+
+Hello my dear you trust at that news you think i am good side hm? HAHAHAHAHAHAHAHAHAHAHA<br>
+HE FATE CAN'T CHANGE YOU ARE NOTHING FOR HIM YOU JUST THE WATCHER HAHAHA<br>
+MY VESSEL ARE ALREADY IN MY PROJECT INFECTED 1.0.0<br>
+AND THEN THIS WORLD WILL BE MINE IRON JUST ONLY TESTER IN MY PROJECT HAHAHAHAHA<br><br>
+
+Title : <span class="glitch" data-text="1010101">1010101</span> Connection load out complete<br><br>
+
+<!-- มอสโค้ด YOU ARE LIAR -->
+<span class="secret-text">
+.--. -.-- --- / .- .-. . / .-.. .. .- .-.
+</span>
+</p>
+
+<script>
+  // Glitch effect แบบ random ตัวอักษร 0/1
+  const glitchElements = document.querySelectorAll('.glitch');
+  setInterval(() => {
+    glitchElements.forEach(el => {
+      const original = el.getAttribute('data-text');
+      let newText = '';
+      for(let c of original){
+        if(Math.random() > 0.7) newText += Math.random() > 0.5 ? '0' : '1';
+        else newText += c;
+      }
+      el.textContent = newText;
+    });
+  }, 150);
+</script>
+
+</body>
+  </html>
