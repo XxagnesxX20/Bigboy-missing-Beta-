@@ -9,26 +9,33 @@
     color: white;
     font-family: monospace;
     padding: 20px;
-    line-height: 1.6;
+    line-height: 1.8;   /* เพิ่มระยะบรรทัด */
+    font-size: 22px;    /* ตัวอักษรหลักใหญ่ขึ้น */
+  }
+
+  h1 {
+    font-size: 40px;    /* หัวข้อใหญ่เด่น */
   }
 
   /* Highlight keywords */
-  .red { color: #ff4d4d; }
-  .yellow { color: #ffff66; }
-  .green { color: #00ff99; }
+  .red { color: #ff4d4d; font-size: 24px; }
+  .yellow { color: #ffff66; font-size: 24px; }
+  .green { color: #00ff99; font-size: 24px; }
 
   /* ไล่สีข้อความลับจากแดงจาง → ขาวกลางๆ */
   .secret-text {
-    background: linear-gradient(to right, rgba(255,0,0,0.5), rgba(255,255,255,0.6));
+    background: linear-gradient(to right, rgba(255,0,0,0.7), rgba(255,255,255,0.8));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    font-size: 26px;    /* ขนาดข้อความลับใหญ่ขึ้น */
   }
 
   /* Glitch effect สำหรับตัวอักษร 0/1 */
   .glitch {
     position: relative;
     display: inline-block;
+    font-size: 26px;    /* ตัว glitch ชัดขึ้น */
   }
   .glitch::before {
     content: attr(data-text);
@@ -65,7 +72,6 @@ If you see a person named <span class="red">bigboy</span>, call this number: 0XX
 If you want to know anything, ask in @???
 </p>
 
-<!-- ข้อความลับต่อจาก binary -->
 <p class="secret-text">
 Title : <span class="glitch" data-text="0101010">0101010</span> Loading connection complete.<br><br>
 
@@ -99,4 +105,4 @@ Title : <span class="glitch" data-text="1010101">1010101</span> Connection load 
 </script>
 
 </body>
-  </html>
+</html>
