@@ -8,13 +8,20 @@
     background-color: black;
     color: white;
     font-family: monospace;
-    padding: 20px;
-    line-height: 1.8;   /* เพิ่มระยะบรรทัด */
-    font-size: 22px;    /* ตัวอักษรหลักใหญ่ขึ้น */
+    margin: 0;
+    padding: 0;
   }
 
   h1 {
-    font-size: 40px;    /* หัวข้อใหญ่เด่น */
+    font-size: 40px;
+    padding: 20px;
+  }
+
+  /* Container scrollable สำหรับข้อความยาว */
+  .log-container {
+    height: 90vh;          /* ให้สูงประมาณ 90% ของหน้าจอ */
+    overflow-y: scroll;     /* เลื่อนขึ้นลงได้ */
+    padding: 20px;
   }
 
   /* Highlight keywords */
@@ -22,26 +29,26 @@
   .yellow { color: #ffff66; font-size: 24px; }
   .green { color: #00ff99; font-size: 24px; }
 
-  /* ไล่สีข้อความลับจากแดงจาง → ขาวกลางๆ */
+  /* ไล่สีข้อความลับจากแดง→ขาว */
   .secret-text {
     background: linear-gradient(to right, rgba(255,0,0,0.7), rgba(255,255,255,0.8));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
-    font-size: 26px;    /* ขนาดข้อความลับใหญ่ขึ้น */
+    font-size: 26px;
+    line-height: 1.8;
   }
 
-  /* Glitch effect สำหรับตัวอักษร 0/1 */
+  /* glitch 0/1 effect */
   .glitch {
     position: relative;
     display: inline-block;
-    font-size: 26px;    /* ตัว glitch ชัดขึ้น */
+    font-size: 26px;
   }
   .glitch::before {
     content: attr(data-text);
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 0; top: 0;
     color: lime;
     animation: glitch-anim 1s infinite;
   }
@@ -59,6 +66,7 @@
 
 <h1>Day on Monday (20/02/20) at 01:30 PM</h1>
 
+<div class="log-container">
 <p>
 At that time my friend named "<span class="red">bigboy</span>" he is gone. 
 He didn't tell anything to us — no message, no anything. 
@@ -83,13 +91,12 @@ AND THEN THIS WORLD WILL BE MINE IRON JUST ONLY TESTER IN MY PROJECT HAHAHAHAHA<
 Title : <span class="glitch" data-text="1010101">1010101</span> Connection load out complete<br><br>
 
 <!-- มอสโค้ด YOU ARE LIAR -->
-<span class="secret-text">
 .--. -.-- --- / .- .-. . / .-.. .. .- .-.
-</span>
 </p>
 
+</div>
+
 <script>
-  // Glitch effect แบบ random ตัวอักษร 0/1
   const glitchElements = document.querySelectorAll('.glitch');
   setInterval(() => {
     glitchElements.forEach(el => {
